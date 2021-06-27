@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class customer(models.Model):
+class Customer(models.Model):
     name = models.CharField(max_length=100,null=True)
     phone = models.CharField(max_length=100,null=True)
     email = models.EmailField(null=True)
@@ -37,7 +37,7 @@ class order(models.Model):
          ('Out for delivery','Out for delivery'),
          ('Delivered','Delivered')
      )
-    customer = models.ForeignKey(customer,null=True,on_delete=models.SET_NULL)
+    customer = models.ForeignKey(Customer,null=True,on_delete=models.SET_NULL)
     product = models.ForeignKey(product,null=True,on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True,null=True)
     status = models.CharField(max_length=100,choices=STATUS)
