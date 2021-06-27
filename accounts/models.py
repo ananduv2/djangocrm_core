@@ -41,4 +41,7 @@ class order(models.Model):
     product = models.ForeignKey(product,null=True,on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True,null=True)
     status = models.CharField(max_length=100,choices=STATUS)
+
+    class Meta:
+        ordering = ('-date_created','status')
     
