@@ -7,4 +7,5 @@ urlpatterns = [
     path('customer/<str:pk>/',customer,name='customer'),
     path('createorder/',createOrder,name='createorder'),
     path('createorder/<str:pk>/',UpdateOrder,name='updateorder'),
+    path('deleteorder/<str:pk>/',deleteOrder,name='deleteorder'),
 ]
