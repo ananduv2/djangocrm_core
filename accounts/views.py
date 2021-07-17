@@ -1,11 +1,37 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages 
+
+
 from .models import *
 from .forms import *
 from .filters import *
 
 # Create your views here.
+
+def login(request):
+    context ={}
+    return render(request,'accounts/login.html',context)
+
+
+def register(request):
+    form = CreateUserForm()
+    if request.method=='POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    context ={'form':form}
+    return render(request,'accounts/register.html',context)
+
+
+
+
+
+
+
 def home(request):
     ORDERS=order.objects.all()
     CUSTOMERS=Customer.objects.all()
